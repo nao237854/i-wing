@@ -11,9 +11,13 @@
     >
       <a-comment
         :author="item.author"
-        :content="item.content"
         :datetime="item.humanDatetime"
-      />
+      >
+        <p
+          slot="content"
+          v-html="getFormatedText(item.content)"
+        />
+      </a-comment>
     </a-list-item>
   </a-list>
 
@@ -29,6 +33,13 @@ export default {
   },
   computed: {
     ...mapGetters({ comments: 'comments' })
+  },
+  methods: {
+    getFormatedText (content) {
+      return content.replace(/^(?:.+\s)?@\w+/i, (match) => {
+        return `<span class="ant-tag ant-tag-has-color" style="background-color: rgb(16, 142, 233);">${match}</span>`
+      })
+    }
   }
 }
 </script>
