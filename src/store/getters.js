@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export default {
-  comments: state => state.comments
+  comments: state => _.sortBy(state.comments, [(o) => { return o.datetime }])
 }

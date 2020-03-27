@@ -12,6 +12,7 @@
       <a-comment
         :author="item.author"
         :content="item.content"
+        :datetime="item.humanDatetime"
       />
     </a-list-item>
   </a-list>

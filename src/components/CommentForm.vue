@@ -54,10 +54,12 @@ export default {
       if (!this.value) {
         return
       }
-
+      const now = new Date()
       this.$store.dispatch('publishComment', {
         author: 'Example User',
-        content: this.value
+        content: this.value,
+        datetime: now.getTime(),
+        humanDatetime: `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`
       })
       this.value = ''
     },
